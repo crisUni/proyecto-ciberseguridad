@@ -11,8 +11,19 @@ const dbPath = path.join(dataDir, 'tienda.db');
 const db = new sqlite3.Database(dbPath);
 
 db.serialize(() => {
-  // TODO: Define schema — fill in the CREATE TABLE statement
-  // db.run(`CREATE TABLE ...`);
+db.run(`CREATE TABLE IF NOT EXISTS productos (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    nombre TEXT NOT NULL,
+    categoria TEXT NOT NULL,
+    precio REAL NOT NULL
+  )`);
+
+  db.run(`CREATE TABLE IF NOT EXISTS usuarios (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username TEXT UNIQUE NOT NULL,
+    password_hash TEXT NOT NULL,
+    rol TEXT NOT NULL
+  )`);
 });
 
 module.exports = db;

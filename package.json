@@ -1,0 +1,21 @@
+{
+  "name": "proyecto-ciberseguridad",
+  "version": "0.1.0",
+  "description": "Vulnerable Node.js app for cybersecurity capstone project",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "populate": "node src/db/populate.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@work.github.com:crisUni/proyecto-ciberseguridad.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "sqlite3": "^5.1.7"
+  }
+}

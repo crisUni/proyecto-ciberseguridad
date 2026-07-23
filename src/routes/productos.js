@@ -13,11 +13,9 @@ function handleGet(req, res) {
   // así el driver lo trata como dato y no como SQL. Como no hacemos eso, una
   // comilla simple en categoria cierra el literal '...' y de ahí en adelante
   // es SQL que se ejecuta (UNION SELECT, OR 1=1, etc...).
-  const sql = `SELECT id, nombre, precio FROM productos WHERE categoria = '${categoria}'`;
+  const sql = 'SELECT id, nombre, precio FROM productos WHERE categoria = ?';
 
-  // (3) sql va directo a db.all sin arreglo de parámetros. Debería ser
-  // db.all(sql, [params], cb).
-  db.all(sql, (err, rows) => {
+  db.all(sql, [categoria], (err, rows) => {
     if (err) {
       // (4) No se oculta el mensaje de error. En esta rama el error
       // de sintaxis de SQLite "unrecognized token", al romper el query
